@@ -1,0 +1,98 @@
+
+
+<div class="container"  [hidden] = "!isSave">
+    <form name="frmProduct" [formGroup] ="frmProduct" (onsubmit)="save();">
+<div class="form-group">
+    <label class="control-label" for="txtProdID">Product ID:</label>
+    <div class="col-md-8">
+        <input type="text" class="form-control" name="ProductId" id="txtProdID" formControlName="ProductId" />
+        <div *ngIf="frmProduct.controls.ProductId.dirty && !frmProduct.controls.ProductId.valid
+        " class="alert alert-danger">
+        <p *ngIf="frmProduct.controls.ProductId.errors.invalid">
+          Product ID Exists
+        </p>
+      </div>
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label" for="txtProdName">Product Name:</label>
+    <div class="col-md-8">
+        <input type="text" class="form-control" name="ProductName" id="txtProdName"  formControlName="ProductName" />
+        <div *ngIf="frmProduct.controls.ProductName.dirty && !frmProduct.controls.ProductName.valid
+        " class="alert alert-danger">
+        <p *ngIf="frmProduct.controls.ProductName.errors.invalidstring">
+                Product Name Must Contain Only String
+              </p>
+        <p *ngIf="frmProduct.controls.ProductName.invalid">
+          Product Name Must Start With UpperCase
+        </p>
+        <p *ngIf="frmProduct.controls.ProductName.invalidWhiteSpace">
+          Product Name Must Contains Only Two White Spaces
+        </p>
+      </div>
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label" for="ddlCategories">Product Catagory:</label>
+    <div class="col-md-8">
+        <select id="ddlCategories" class="form-control" name="CategoryName" formControlName="CategoryName">
+            <option [selected]="true" value="Select Category">Select Category</option>
+            <option *ngFor="let item of categories" [value] ="item">{{item}}</option>
+        </select>
+        <div *ngIf="frmProduct.controls.CategoryName.dirty && !frmProduct.controls.CategoryName.valid
+        " class="alert alert-danger">
+        <p *ngIf="frmProduct.controls.CategoryName.errors.invalidCategory">
+           Please Select Category
+        </p>
+      </div>
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label" for="txtProdPrice">Product Price:</label>
+    <div class="col-md-8">
+        <input type="text" class="form-control" name="Price" id="txtProdPrice"  formControlName="Price" />
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-md-8">
+    <input type="button" id="btnNew" class="btn btn-default btn-info m-2" value="Save" (click)="save();" />
+    <input type="button" id="btnClear" class="btn btn-default btn-danger m-2" value="Clear" (click)="clear();" />
+    <input type="button" id="btnDelete" class="btn btn-default btn-danger m-2" value="Delete" (click)="delete();" />
+    </div>
+</div>
+</form>
+</div>
+<div class="container" [hidden] = "isSave">
+    <table class="table table-bordered table-striped">
+       <thead>
+        <tr>
+        <th *ngFor="let item of tableHeaders"> {{item}}</th>
+        <th><label> Check All
+            <input type="checkbox" (click)="CheckAll();" [checked]="checkAll"/>  
+        </label>
+    </th>
+        </tr>
+    </thead>
+        <tbody>
+        <tr *ngFor="let item of products" (click)="getSelectedrow(item);">
+            <td *ngFor="let c of tableHeaders">{{item[c]}}</td>
+            <td>
+                    <label> Check
+                            <input type="checkbox" (click)="Check();" [checked] = "check" />  
+                  </label>
+            </td>
+            <!-- <td>{{item.ProductId}}</td>
+            <td>{{item.ProductName}}</td>
+            <td>{{item.CategoryName}}</td>
+            <td>{{item.Price}}</td> -->
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4">
+                <input type="button" value="Load Form" (click)="loadForm();" class="btn btn-warning" />
+            </td>
+        </tr>
+    </tfoot>
+    </table>
+</div>
