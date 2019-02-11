@@ -1,13 +1,17 @@
 # harbingerAssignments
 Training Assignments
 
-nodeappsjs is the project for nodeJS and it has docker file in it.
+#Folders aka Apps Description is as follows.
 
-ng7apps is the project for angular and its has docker file in it.
+1. nodeappsjs is the project for nodeJS and it has docker file in it.
 
-reactapp contains app for react and it also contains the docker file in it.
+2. ng7apps is the project for angular and its has docker file in it.
 
-ngapp contains the assignments of typescript.
+3. reactapp contains app for react and it also contains the docker file in it.
+
+4. ngapp contains the assignments of typescript.
+
+==================================================================================================================================
 
 1. For Node,
   - Go to the root directory
