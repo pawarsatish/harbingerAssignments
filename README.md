@@ -19,7 +19,7 @@ ngapp contains the assignments of typescript.
 
 3. For React you have to run "npm run start" command by navigating root directory of the application.
 
-Note: After opening folders aka Apps you have to run ""npm install" command first to install all dependencies through package.json file.
+Note: After opening folders aka Apps you have to run "npm install" command first to install all dependencies through package.json file.
 
 
 
